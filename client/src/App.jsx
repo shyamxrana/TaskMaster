@@ -12,19 +12,20 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
+import HomePage from "./pages/HomePage";
 
 import Layout from "./components/Layout";
 import Stats from "./pages/Stats";
 import History from "./pages/History";
 
 // Protected Route Component
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, fallback }) => {
   const { user, isLoading } = useContext(AuthContext);
 
   if (isLoading) return <div className="spinner"></div>;
 
   if (!user) {
-    return <Navigate to="/login" />;
+    return fallback || <Navigate to="/login" />;
   }
   return children;
 };
@@ -60,6 +61,17 @@ function AppContent() {
 
   return (
     <Routes>
+      {/* Public Routes */}
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute fallback={<HomePage />}>
+            <Layout theme={theme} toggleTheme={toggleTheme}>
+              <Dashboard />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/login"
         element={
@@ -79,7 +91,7 @@ function AppContent() {
 
       {/* Protected Routes with Layout */}
       <Route
-        path="/"
+        path="/dashboard"
         element={
           <ProtectedRoute>
             <Layout theme={theme} toggleTheme={toggleTheme}>

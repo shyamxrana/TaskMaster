@@ -189,7 +189,7 @@ function Dashboard() {
 
       // Confetti Logic
       if (updData instanceof FormData) {
-        showNotification("Task completed & proof submitted! 🎉");
+        showNotification("Task completed & proof submitted! ");
         confetti({
           particleCount: 150,
           spread: 70,
@@ -229,7 +229,7 @@ function Dashboard() {
         if (isCompleted) {
           const xpMap = { High: 30, Medium: 20, Low: 10 };
           const gainedXP = xpMap[todoToUpdate.priority] || 20;
-          showNotification(`Task completed! 🎉 +${gainedXP} XP`, "success");
+          showNotification(`Task completed!  +${gainedXP} XP`, "success");
 
           confetti({
             particleCount: 100,

@@ -62,7 +62,7 @@ const Sidebar = ({ className, onClose }) => {
           onClick={onClose}
           className={cn(
             "flex items-center gap-3 px-4 py-3 rounded-md transition-all font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground",
-            isActive("/") &&
+            (isActive("/") || isActive("/dashboard")) &&
               "bg-primary/10 text-primary hover:bg-primary/10 hover:text-primary"
           )}
         >
