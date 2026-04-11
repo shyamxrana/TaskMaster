@@ -1,6 +1,6 @@
 const express = require("express");
 const colors = require("colors");
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config();  
 const cors = require("cors"); // Import cors
 const { errorHandler } = require("./middleware/errorMiddleware"); // Will create this
 const connectDB = require("./config/db");
